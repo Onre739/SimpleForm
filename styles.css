@@ -1,0 +1,79 @@
+body {
+    /* background-image: conic-gradient(#3b3b3b, #666666, #3b3b3b); */
+}
+
+.body-card {
+    padding: 1rem;
+}
+
+.main-card {
+    height: 100%;
+
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    z-index: 5;
+
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+}
+
+.list-group {
+    height: 164px;
+    overflow-y: auto;
+}
+
+.product-cards {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    flex-wrap: wrap;
+
+    overflow-y: auto;
+    height: 418px;
+}
+
+.product {
+    width: 48%;
+}
+
+.modal {
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: none;
+    z-index: 100;
+}
+
+.modal .card {
+    width: 40vw;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+}
+
+.modal .card .card-body {
+    padding: 1rem;
+}
+
+.dropdown-curr {
+    height: 200px;
+    overflow-y: auto;
+}
+
+/* .block{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    translate: -50% -50%;
+    width: 80px;
+    height: 80px;
+    border-radius: 100px;
+    background-color: aqua;
+} */

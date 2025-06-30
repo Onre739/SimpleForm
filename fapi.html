@@ -1,0 +1,554 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Page Title</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">  
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr" crossorigin="anonymous">
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body onload="load_cnb()">
+    <div class="container mt-5">
+      <h3>Best Wooden Spoons 🥄</h3>
+      <!-- ---------------------- MODAL OKNO ---------------------- -->
+      <div class="modal">
+        <div class="card">
+          <div class="card-header d-flex justify-content-between">
+            <h5>Recap</h5>
+            <button id="recap-done-btn" class="btn btn-success btn-sm">Done</button>
+          </div>
+          <div class="card-body">
+              <h5>User:</h5>
+              <div class="text-center" id="recap-info-name"></div>
+              <div class="text-center" id="recap-info-email"></div>
+              <div class="text-center" id="recap-info-phone"></div>
+              <div class="text-center" id="recap-info-address"></div>
+              <div class="text-center" id="recap-info-city-postal" class="mb-3"></div>
+
+              <h5>Products:</h5>
+              <ul id="products-list-recap" class="mb-3"></ul>
+
+              <div class="d-flex justify-content-between align-items-center">
+                
+                <div class="d-flex align-items-center">
+                  <h5 class="me-3">Total:</h5>
+                  <h5 id="recap-info-total"></h5>
+                </div>
+
+                <div class="btn-group">
+                  <button id="recap-info-curr-btn" type="button" class="btn btn-success dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    CZK
+                  </button>
+                  <ul id="recap-info-curr" class="dropdown-menu dropdown-curr"></ul>
+                </div>
+
+                <div id="recap-info-dph"></div>
+
+              </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="card body-card">
+        <!-- -------------------- ROW 1 ------------------------------- -->
+        <div class="row">
+          <!-- ---------------- COL 1 ---------------------- -->
+          <div class="col-12 col-md-6 mb-3">
+
+            <div class="card main-card info-card">
+              <h5 class="card-header">Info</h5>
+              <div class="card-body">
+                <!-- ---------------- FORM ------------------ -->
+                <form>
+                    <div class="container">
+                        <h5 class="mb-3">Personal Info</h5>
+                        <div class="row mb-3">
+                          <div class="col-3">
+                            <label class="form-label" for="first-name-form">First name</label>
+                          </div>
+              
+                          <div class="col-3">
+                            <input class="form-control" id="first-name-form" />
+                          </div>
+              
+                          <div class="col-3">
+                            <label class="form-label" for="last-name-form">Last name</label>
+                          </div>
+              
+                          <div class="col-3">
+                            <input class="form-control" id="last-name-form" />
+                          </div>
+                        </div>
+              
+                        <div class="row mb-3">
+                          <div class="col-3">
+                            <label class="form-label" for="email-form">Email</label>
+                          </div>
+                          <div class="col-9">
+                            <input id="email-form" class="form-control" type="email" />
+                          </div>
+                        </div>
+              
+                        <div class="row mb-3">
+                          <div class="col-3">
+                            <label class="form-label" for="phone-form">Phone number</label>
+                          </div>
+                          <div class="col-3">
+                            <input id="phone-form" class="form-control" type="text" />
+                          </div>
+                        </div>
+                    </div>
+        
+                    <div class="container">
+                        <h5 class="mb-3">Address</h5>
+                        <div class="row mb-3">
+                          <div class="col-3">
+                            <label class="form-label" for="street-form">Street</label>
+                          </div>
+                          <div class="col-3">
+                            <input id="street-form" class="form-control" type="text" />
+                          </div>
+              
+                          <div class="col-3">
+                            <label class="form-label" for="house-num-form">House number</label>
+                          </div>
+                          <div class="col-3">
+                            <input id="house-num-form" class="form-control" type="text" />
+                          </div>
+                        </div>
+              
+                        <div class="row mb-3">
+                          <div class="col-3">
+                            <label class="form-label" for="city-form">City</label>
+                          </div>
+                          <div class="col-3">
+                            <input id="city-form" class="form-control" type="text" />
+                          </div>
+              
+                          <div class="col-3">
+                            <label class="form-label" for="postal-form">Postal code</label>
+                          </div>
+                          <div class="col-3">
+                            <input id="postal-form" class="form-control" type="text" />
+                          </div>
+              
+                        </div>
+                    </div>
+                <!-- //---------------- FORM ------------------ -->
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <!-- ---------------- COL 2 ---------------------- -->
+          <div class="col-12 col-md-6 mb-3">
+            <div class="card main-card">
+              <h5 class="card-header">Products</h5>
+              <div class="card-body product-cards">
+        
+                <!-- ----------- IMG CARDS ----------- -->
+                <div class="card product">
+                  <img height="150" src="imgs/varecka1.jpg" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Type 1</h5>
+                    <p class="card-text">Simple wooden spoon</p>
+                    <p class="card-text">50 CZK</p>
+                    <button class="btn btn-success btn-add" data-id='1'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="card product">
+                  <img height="150" src="imgs/varecka2.webp" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Type 2</h5>
+                    <p class="card-text">Simple wooden spoon with pattern</p>
+                    <p class="card-text">75 CZK</p>                    
+                    <button class="btn btn-success btn-add" data-id='2'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="card product">
+                  <img height="150" src="imgs/varecka3.webp" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Type 3</h5>
+                    <p class="card-text">Advanced wooden spoon</p>
+                    <p class="card-text">100 CZK</p>                    
+                    <button class="btn btn-success btn-add" data-id='3'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="card product">
+                  <img height="150" src="imgs/varecka4.webp" class="card-img-top" alt="...">
+                  <div class="card-body">
+                    <h5 class="card-title">Type 4</h5>
+                    <p class="card-text">Professional wooden spoon</p>
+                    <p class="card-text">150 CZK</p>
+                    <button class="btn btn-success btn-add" data-id='4'>
+                      <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" fill="currentColor" class="bi bi-bag-plus-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0M8.5 8a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V12a.5.5 0 0 0 1 0v-1.5H10a.5.5 0 0 0 0-1H8.5z"/>
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+        
+              </div>
+        
+            </div>
+
+          </div>
+        </div>
+        
+        <!-- -------------------------------------------------- -->
+      
+        <!-- ------------------- ROW 2 --------------------------- -->
+        <div class="row">
+          <div class="col-12">
+            <div class="card main-card summary-card">
+              <h5 class="card-header">Summary</h5>
+              <div class="card-body overflow-x-auto">
+                <div class="row">
+                  <h5 class="col-6">Items:</h5>
+                  <b class="col-2 col-lg-3">Name</b>
+                  <b class="col-2 col-lg-2">Count</b>
+                  <b class="col-2 col-lg-1">Price</b>
+                </div>
+                <ul id="products-list" class="list-group mb-3"></ul>
+
+                <div class="d-flex justify-content-between align-items-center">
+                  <div class="d-flex align-items-center">
+                    <h5 class="me-3">Price:</h5>
+                    <h5 id="price-div">0 CZK</h5>
+                  </div>
+                  <b id="error-label" style="color: red; display: none;"></b>
+                  <div class="">
+                    <button id="btn-send" type="button" class="btn btn-success">Send</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+
+  </body>
+
+  <script>
+    var products = [];
+    var user = [];
+    var totalPrice = 0;
+    var totalPriceCZK = 0;
+    var currency = "CZK";
+
+    // ------------------- Přidávání produktů -------------------
+    function addProduct(type){
+      let img = "";
+      let price = 0;
+      let exist = false;
+
+      type > 1 ? img = "imgs/varecka" + type + ".webp" : img = "imgs/varecka" + type + ".jpg"; 
+
+      switch(type){
+        case "1":
+          price = 50;
+          break;
+
+        case "2":
+          price = 75;
+          break;
+
+        case "3":
+          price = 100;
+          break;
+
+        case "4":
+          price = 150;
+          break;
+      }
+
+      // Kontrola existence
+      products.forEach(item => {
+        if (item.type == type){
+          item.count += 1;
+          item.price += price;
+          exist = true;
+        }
+      });
+
+      // Pokud neexistuje
+      if (!exist){
+        let product = {
+          name: "Type " + type,
+          img: img,
+          price: price,
+          type: type,
+          count: 1
+        }
+        products.push(product);
+      }
+
+      console.log(products);
+
+      // Schovávám error label protože přidávám item
+      document.getElementById("error-label").style.display = "none";
+
+      renderProducts();
+    }
+
+    // ------------------- Vykreslování vybraných produktů -------------------
+    function renderProducts(){
+      let list_el = document.getElementById("products-list");
+      list_el.innerHTML = "";
+      totalPrice = 0;
+
+      products.forEach(prod => {
+        totalPrice += prod.price;
+        totalPriceCZK = totalPrice;
+
+        const li = document.createElement("li");
+        li.setAttribute("class", "list-group-item d-flex justify-content-between align-items-center");
+
+        const name_div = document.createElement("div");
+        const count_div = document.createElement("div");
+        const price_div = document.createElement("div");
+        const img_div = document.createElement("div");
+        const img = document.createElement("img");
+        const del_btn = document.createElement("btn");
+
+        name_div.innerText = prod.name;
+        count_div.innerText = prod.count;
+        price_div.innerText = prod.price + " " + currency;
+        img.setAttribute("src", prod.img);
+        img.setAttribute("height", "75");
+        img.setAttribute("width", "120");
+        del_btn.setAttribute("class", "del-btn btn btn-success btn-sm");
+        del_btn.setAttribute("data-id", prod.type);
+        del_btn.innerText = "X";
+
+        img_div.appendChild(img);
+
+        li.appendChild(img_div);
+        li.appendChild(del_btn);
+        li.appendChild(name_div);
+        li.appendChild(count_div);
+        li.appendChild(price_div);
+
+        list_el.appendChild(li);
+      });
+
+      // Button listeners - odebírání produktů
+      document.querySelectorAll(".del-btn").forEach(btn => {
+        btn.addEventListener("click", event => {
+          const id = event.currentTarget.dataset.id;
+
+          products = products.filter(item => item.type != id);
+          renderProducts();
+        });
+      });
+
+      // Celková cena
+      document.getElementById("price-div").innerText = totalPrice + " " + currency;
+    }
+
+    // ------------------- Kontrola -------------------
+    function validate(){
+      user = [];
+
+      // Informace
+      let first_name = document.getElementById("first-name-form");
+      let last_name = document.getElementById("last-name-form");
+      let email = document.getElementById("email-form");
+      let phone = document.getElementById("phone-form");
+      let street = document.getElementById("street-form");
+      let house = document.getElementById("house-num-form");
+      let city = document.getElementById("city-form");
+      let postal = document.getElementById("postal-form");
+      
+      // Zaplnění polí
+      let inputs = [first_name, last_name, email, phone, street, house, city, postal];
+      console.log(inputs);
+      
+      inputs.forEach(item => {
+        if (!item.value.trim()) {
+          item.classList.add("is-invalid");
+          return;
+        } 
+        else {
+          user.push(item.value.trim());
+          item.classList.remove("is-invalid");
+        }
+      });
+
+      // Pouze čísla
+      const regex = /^\d+$/;
+      if (!regex.test(phone.value.trim()) || phone.value.trim().length != 9) {
+        console.error("Bad Phone Number!!!");
+        phone.classList.add("is-invalid");
+        return;
+      } 
+      else {
+        phone.classList.remove("is-invalid");
+      }
+
+      if (!regex.test(house.value.trim())) {
+        console.error("Bad House Number!!!");
+        house.classList.add("is-invalid");
+        return;
+      } 
+      else {
+        house.classList.remove("is-invalid");
+      }
+
+      if (!regex.test(postal.value.trim())) {
+        console.error("Bad Postal Number!!!");
+        postal.classList.add("is-invalid");
+        return;
+      } 
+      else {
+        postal.classList.remove("is-invalid");
+      }
+
+      
+      // Produkty
+      if (products.length <= 0) {
+        document.getElementById("error-label").style.display = "block";
+        document.getElementById("error-label").innerText = "Select product !!!";
+        console.error("NO PRODUCT");
+        
+        return;
+      }
+
+      recap();
+    }
+
+    // ------------------- Rekapitulace + Měna -------------------
+    function recap(){
+      // Informace
+      document.querySelector(".modal").style.display = "block";
+      document.getElementById("recap-info-name").innerText = user[0] + " " + user[1];
+      document.getElementById("recap-info-email").innerText = user[2];
+      document.getElementById("recap-info-phone").innerText = user[3];
+      document.getElementById("recap-info-address").innerText = user[4] + " " + user[5];
+      document.getElementById("recap-info-city-postal").innerText = user[6] + " " + user[7];
+
+      // Produkty - odebírání tlačítka X
+      let ul = document.getElementById("products-list-recap");
+      ul.innerHTML = document.getElementById("products-list").innerHTML;
+      
+      let lis = ul.querySelectorAll("li");
+      lis.forEach(li => {
+        let del_btn = li.querySelector("btn");
+        li.removeChild(del_btn);
+
+      });
+      
+      // Total cena
+      document.getElementById("recap-info-total").innerText = totalPrice + " " + currency;
+      let dph = Number((totalPrice * 0.21).toFixed(2));
+      
+      document.getElementById("recap-info-curr-btn").innerText = currency;
+
+      document.getElementById("recap-info-dph").innerText = "DPH: " + dph + " " + currency; 
+
+    }
+
+    // ------------------- Načítání dat z api -------------------
+    function load_cnb() {
+      const script = document.createElement("script");
+      script.src = "https://data.kurzy.cz/json/meny/b[6]cb[data].js"; // JSONP
+      document.body.appendChild(script);
+    }
+
+    function data(data) {
+      console.log(data);
+      const ul = document.getElementById("recap-info-curr");
+
+      // List měn
+      for (const key in data.kurzy) {
+        const li = document.createElement("li");
+        const a = document.createElement("a");
+  
+        a.setAttribute("class", "dropdown-item");
+        a.innerText = key;
+        a.addEventListener("click", () => {
+          changeCurr(data.kurzy[key], key);
+        });
+  
+        li.appendChild(a);
+        ul.appendChild(li);
+      }
+
+      // Zpátky na CZK
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.setAttribute("class", "dropdown-item");
+      a.innerText = "CZK";
+      a.addEventListener("click", () => {
+        currency = "CZK";
+        totalPrice = totalPriceCZK;
+        recap();
+      });
+
+      li.appendChild(a);
+      ul.appendChild(li);
+    }
+    
+    // Změna měny
+    function changeCurr(curr, key){
+      console.log(curr);
+
+      currency = key;
+      totalPrice = (Number(totalPriceCZK) * Number(curr.jednotka)) / Number(curr.dev_stred);
+      totalPrice = Number(totalPrice.toFixed(2));
+
+      recap();
+    }
+
+    // ------------------- Listeneři -------------------
+    // Přidávání produktu BTN
+    document.querySelectorAll(".btn-add").forEach(btn => {
+      btn.addEventListener("click", event => {
+        const id = event.currentTarget.dataset.id;
+        console.log("id: " + id);
+        console.log(event);
+
+        addProduct(id);
+      });
+    });
+
+    // Validace BTN
+    document.getElementById("btn-send").addEventListener("click", event => {
+      validate();
+    });
+
+    // Konec Recap
+    document.getElementById("recap-done-btn").addEventListener("click", event => {
+      document.querySelector(".modal").style.display = "none";
+      window.alert("Úspěšně objednáno ✅");
+      window.location.href = "fapi.html";
+    });
+
+
+
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.bundle.min.js" 
+          integrity="sha384-ndDqU0Gzau9qJ1lfW4pNLlhNTkCfHzAVBReH9diLvGRem5+R9g2FzA8ZGN954O5Q" 
+          crossorigin="anonymous">
+  </script>
+
+</html>
